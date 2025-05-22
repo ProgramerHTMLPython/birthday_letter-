@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Flor Animada</title>
+  <style>
+    body {
+      background-color: #ffdde2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .petalo, .centro, .mensaje1, .mensaje2 {
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    .flor {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      margin-bottom: 30px;
+    }
+
+    .petalo {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background-color: #ce58ce;
+      border-radius: 50%;
+    }
+
+    .p1 { top: 0; left: 60px; }
+    .p2 { top: 60px; left: 0; }
+    .p3 { top: 60px; left: 120px; }
+    .p4 { top: 120px; left: 60px; }
+
+    .centro {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background-color: yellow;
+      border-radius: 50%;
+      top: 70px;
+      left: 70px;
+      z-index: 1;
+    }
+
+    .mensaje1 {
+      font-size: 2em;
+      color: #c11c84;
+      font-weight: bold;
+    }
+
+    .mensaje2 {
+      font-size: 1em;
+      margin-top: 15px;
+      color: #7a1c63;
+    }
+  </style>
+</head>
+<body>
+  <div class="flor">
+    <div class="petalo p1"></div>
+    <div class="petalo p2"></div>
+    <div class="petalo p3"></div>
+    <div class="petalo p4"></div>
+    <div class="centro"></div>
+  </div>
+
+  <div class="mensaje1">HAPPY BIRTHDAY MOMMY!!!</div>
+  <div class="mensaje2">
+    <i>Psalm 90:12: "Teach us to number our days, that we may gain a heart of wisdom."
+</i>
+  </div>
+
+  <script>
+    const petalos = document.querySelectorAll('.petalo');
+    const centro = document.querySelector('.centro');
+    const mensaje1 = document.querySelector('.mensaje1');
+    const mensaje2 = document.querySelector('.mensaje2');
+
+    petalos.forEach((petalo, i) => {
+      setTimeout(() => {
+        petalo.style.opacity = 1;
+      }, i * 800);
+    });
+
+    setTimeout(() => {
+      centro.style.opacity = 1;
+    }, petalos.length * 800);
+
+    setTimeout(() => {
+      mensaje1.style.opacity = 1;
+    }, (petalos.length + 1) * 800);
+
+    setTimeout(() => {
+      mensaje2.style.opacity = 1;
+    }, (petalos.length + 2) * 800);
+  </script>
+</body>
+</html>
